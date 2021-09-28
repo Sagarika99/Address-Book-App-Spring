@@ -1,7 +1,10 @@
 package com.bridgelabz.addressbook.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class AddressBookDTO {
 
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Contact name invalid")
 	public String fname;
 	public String lname;
 	public String phoneNum;
