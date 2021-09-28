@@ -4,9 +4,11 @@ import javax.validation.constraints.Pattern;
 
 public class AddressBookDTO {
 
-	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Contact name invalid")
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Contact first name invalid")
 	public String fname;
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Contact last name invalid")
 	public String lname;
+	@Pattern(regexp="(0/91)?[7-9][0-9]{9}",message="Phone No Invalid")
 	public String phoneNum;
 		
 	public AddressBookDTO() {
