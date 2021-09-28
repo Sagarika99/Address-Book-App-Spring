@@ -11,37 +11,40 @@ import com.bridgelabz.addressbook.model.AddressBookData;
 @Service
 public class AddressBookService implements IAddressBookService{
 
+	private List<AddressBookData> addrBookList = new ArrayList<>();
+	
 	@Override
-	public List<AddressBookData> getAddrBookdata() {
-		List<AddressBookData> addrBookList=new ArrayList<>();
-		addrBookList.add(new AddressBookData(1,new AddressBookDTO("Pankaj","Shah","9887786789")));		
+	public List<AddressBookData> getAddrBookdata() {		
 		return addrBookList;
 	}
 
 	@Override
 	public AddressBookData getAddrBookdata(int contactId) {
-		AddressBookData addrBookData=null;
-		addrBookData=new AddressBookData(contactId,new AddressBookDTO("Pankaj","Shah","9887786789"));
-		return addrBookData;
+		return addrBookList.get(contactId-1);
 	}
 
 	@Override
 	public AddressBookData addAddrBookdata(AddressBookDTO addressbookDTO) {
 		AddressBookData addrBookData=null;
-		addrBookData=new AddressBookData(3,addressbookDTO);
+		addrBookData=new AddressBookData(1,addressbookDTO);
+		addrBookList.add(addrBookData);
 		return addrBookData;
 	}
 
 	@Override
-	public AddressBookData updateAddrBookdata(int empId, AddressBookDTO addressbookDTO) {
+	public AddressBookData updateAddrBookdata(int contactId, AddressBookDTO addressbookDTO) {
 		AddressBookData addrBookData=null;
-		addrBookData=new AddressBookData(empId,addressbookDTO);
+		addrBookData=new AddressBookData(contactId,addressbookDTO);
+		addrBookData.setFname(addressbookDTO.fname);
+		addrBookData.setLname(addressbookDTO.lname);
+		addrBookData.setPhoneNum(addressbookDTO.phoneNum);
+		addrBookList.set(contactId-1, addrBookData);
 		return addrBookData;
 	}
 
 	@Override
 	public void deleteAddrBookdata(int contactId) {
-		// TODO Auto-generated method stub
+		addrBookList.remove(contactId-1);
 		
 	}
 
