@@ -9,9 +9,10 @@ import lombok.Data;
 public @Data class AddressBookData {
 
 	private int contactId;
-	public String fname;
-	public String lname;
-	public String phoneNum;
+	private String fname;
+	private String lname;
+	private String phoneNum;
+	
 	public List<String> addressbook_type;
 	
 	public AddressBookData() {}

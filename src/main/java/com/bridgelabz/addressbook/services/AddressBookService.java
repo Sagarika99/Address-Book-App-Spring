@@ -23,7 +23,7 @@ public class AddressBookService implements IAddressBookService{
 	public AddressBookData getAddrBookdata(int contactId) {
 		return addrBookList.stream().filter(contactData->contactData.getContactId()==contactId)
 				.findFirst()
-				.orElseThrow(()->new AddressBookException("contact not found"));
+				.orElseThrow(()->new AddressBookException("Contact not found"));
 	}
 
 	@Override
