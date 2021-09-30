@@ -3,14 +3,22 @@ package com.bridgelabz.addressbook.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.addressbook.dto.AddressBookDTO;
 import com.bridgelabz.addressbook.exceptions.AddressBookException;
 import com.bridgelabz.addressbook.model.AddressBookData;
+import com.bridgelabz.addressbook.repository.AddressBookRepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class AddressBookService implements IAddressBookService{
+	
+	@Autowired
+	private AddressBookRepository addrBookRepository;
 
 	private List<AddressBookData> addrBookList = new ArrayList<>();
 	
@@ -29,15 +37,16 @@ public class AddressBookService implements IAddressBookService{
 	@Override
 	public AddressBookData addAddrBookdata(AddressBookDTO addressbookDTO) {
 		AddressBookData addrBookData=null;
-		addrBookData=new AddressBookData(1,addressbookDTO);
+		addrBookData=new AddressBookData(addressbookDTO);
 		addrBookList.add(addrBookData);
-		return addrBookData;
+		log.debug("Contact data: "+addrBookData.toString());
+		return addrBookRepository.save(addrBookData);
 	}
 
 	@Override
 	public AddressBookData updateAddrBookdata(int contactId, AddressBookDTO addressbookDTO) {
 		AddressBookData addrBookData=null;
-		addrBookData=new AddressBookData(contactId,addressbookDTO);
+		addrBookData=new AddressBookData(addressbookDTO);
 		addrBookData.setFname(addressbookDTO.fname);
 		addrBookData.setLname(addressbookDTO.lname);
 		addrBookData.setPhoneNum(addressbookDTO.phoneNum);
