@@ -1,13 +1,20 @@
 package com.bridgelabz.addressbook.model;
 
+import java.util.List;
+
 import com.bridgelabz.addressbook.dto.AddressBookDTO;
 
-public class AddressBookData {
+import lombok.Data;
+
+public @Data class AddressBookData {
 
 	private int contactId;
 	public String fname;
 	public String lname;
 	public String phoneNum;
+	public List<String> addressbook_type;
+	
+	public AddressBookData() {}
 	
 	public AddressBookData(int contactId, AddressBookDTO addressBookDTO) {
 		super();
@@ -15,39 +22,7 @@ public class AddressBookData {
 		this.fname = addressBookDTO.fname;
 		this.lname = addressBookDTO.lname;
 		this.phoneNum = addressBookDTO.phoneNum;
+		this.addressbook_type = addressBookDTO.addressbook_type;
 	}
-
-	public int getContactId() {
-		return contactId;
-	}
-
-	public void setContactId(int contactId) {
-		this.contactId = contactId;
-	}
-
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
-	public String getLname() {
-		return lname;
-	}
-
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
-	
 	
 }
