@@ -66,7 +66,7 @@ public class AddressBookController {
 	
 	@DeleteMapping("/delete/{contactId}")
 	public ResponseEntity<ResponseDTO> deleteAddrBookdata(@PathVariable("contactId") int contactId){
-		//AddressBookData addrBookData = addrBookService.deleteAddrBookdata(contactId);
+		addrBookService.deleteAddrBookdata(contactId);
 		ResponseDTO respDTO=new ResponseDTO("Deleted Sucessfully","Deleted Id: "+contactId);
 		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
 	}
