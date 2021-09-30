@@ -25,6 +25,12 @@ public class AddressBookService implements IAddressBookService{
 	public List<AddressBookData> getAddrBookdata() {		
 		return addrBookRepository.findAll();
 	}
+	
+
+	@Override
+	public List<AddressBookData> findContactByAddressBookType(String bookType) {
+		return addrBookRepository.findContactByAddressBookType(bookType);
+	}
 
 	@Override
 	public AddressBookData getAddrBookdata(int contactId) {
@@ -53,5 +59,6 @@ public class AddressBookService implements IAddressBookService{
 		addrBookRepository.delete(addrBookData);
 		
 	}
+
 
 }

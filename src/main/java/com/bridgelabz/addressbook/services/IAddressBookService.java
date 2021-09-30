@@ -9,6 +9,8 @@ public interface IAddressBookService {
 
 	List<AddressBookData> getAddrBookdata();
 	
+	List<AddressBookData> findContactByAddressBookType(String bookType);
+	
 	AddressBookData getAddrBookdata(int contactId);
 	
 	AddressBookData addAddrBookdata(AddressBookDTO addressbookDTO);
