@@ -1,8 +1,8 @@
 package com.bridgelabz.addressbook.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +49,8 @@ public class AddressBookService implements IAddressBookService{
 	@Override
 	public AddressBookData updateAddrBookdata(int contactId, AddressBookDTO addressbookDTO) {
 		AddressBookData addrBookData=this.getAddrBookdata(contactId);
-		addrBookData.updateAddressBookData(addressbookDTO);
+		BeanUtils.copyProperties(addressbookDTO, addrBookData);
+
 		return addrBookRepository.save(addrBookData);
 	}
 

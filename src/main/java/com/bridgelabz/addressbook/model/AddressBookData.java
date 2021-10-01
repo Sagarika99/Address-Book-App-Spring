@@ -39,10 +39,6 @@ public @Data class AddressBookData {
 	public AddressBookData() {}
 	
 	public AddressBookData(AddressBookDTO addressBookDTO) {
-		this.updateAddressBookData(addressBookDTO);
-	}
-	
-	public void updateAddressBookData(AddressBookDTO addressBookDTO) {
 		//this.contactId = contactId;
 		this.fname = addressBookDTO.fname;
 		this.lname = addressBookDTO.lname;

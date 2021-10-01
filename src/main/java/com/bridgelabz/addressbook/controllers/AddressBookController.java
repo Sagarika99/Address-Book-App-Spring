@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.addressbook.dto.AddressBookDTO;
@@ -47,8 +48,8 @@ public class AddressBookController {
 		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
 	}
 	
-	@GetMapping("/booktype/{booktype}")
-	public ResponseEntity<ResponseDTO> getAddrBookdata(@PathVariable("booktype") String booktype){
+	@GetMapping("/get/booktype")
+	public ResponseEntity<ResponseDTO> getAddrBookdata(@RequestParam String booktype){
 		List<AddressBookData> addrBookData = null;
 		addrBookData = addrBookService.findContactByAddressBookType(booktype);
 		ResponseDTO respDTO=new ResponseDTO("Get call for ID Success",addrBookData);
@@ -61,7 +62,7 @@ public class AddressBookController {
 		AddressBookData addrBookData = null;
 		addrBookData = addrBookService.addAddrBookdata(addressbookDTO);
 		ResponseDTO respDTO=new ResponseDTO("Added Employee Payroll Data Sucessfully",addrBookData);
-		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
+		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update/{contactId}")
